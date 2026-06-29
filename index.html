@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Loving Memory of Ricardo Abalos Landingin</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Cinzel:wght@400;500&family=Lato:wght@300;400&display=swap');
+
+  :root {
+    --ivory: #F7F4EE;
+    --warm-white: #FDFCFA;
+    --gold: #B8975A;
+    --gold-light: #D4B07A;
+    --deep: #2C2416;
+    --mid: #5C4F38;
+    --soft: #8C7B60;
+    --rule: #D6CAB0;
+    --candle: #FFF8E8;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--ivory);
+    color: var(--deep);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--deep);
+    color: var(--ivory);
+    text-align: center;
+    padding: 72px 24px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(184,151,90,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-cross {
+    font-size: 2rem;
+    color: var(--gold);
+    letter-spacing: 0.3em;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.6rem, 5vw, 2.8rem);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: var(--ivory);
+    margin-bottom: 8px;
+  }
+  .hero-dates {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 28px;
+  }
+  .hero-rule {
+    width: 80px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 28px;
+  }
+  .hero-verse {
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(247,244,238,0.75);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--rule);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0 16px;
+  }
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0;
+    list-style: none;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  nav a {
+    display: block;
+    padding: 14px 16px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--gold); }
+
+  /* ── LAYOUT ── */
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── SECTION ── */
+  section {
+    margin-top: 64px;
+    scroll-margin-top: 60px;
+  }
+  .section-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--mid);
+    margin-bottom: 6px;
+  }
+  .section-rule {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 28px;
+  }
+
+  /* ── PRAYER BLOCKS ── */
+  .prayer-block {
+    background: var(--warm-white);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    padding: 32px 36px;
+    margin-bottom: 20px;
+  }
+  .prayer-block p { margin-bottom: 1em; }
+  .prayer-block p:last-child { margin-bottom: 0; }
+
+  /* ── LEADER / ALL call-response ── */
+  .response-pair {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 4px 16px;
+    margin-bottom: 10px;
+    align-items: start;
+  }
+  .role {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--soft);
+    padding-top: 3px;
+    white-space: nowrap;
+    font-weight: 400;
+  }
+  .role.all { color: var(--gold); }
+  .response-text { }
+  .response-text.all { font-style: italic; }
+  .response-text.highlight {
+    font-style: italic;
+    color: var(--mid);
+  }
+
+  /* ── LITANY ── */
+  .litany-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .litany-row:last-child { border-bottom: none; }
+  .litany-invocation { flex: 1; }
+  .litany-response {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: var(--gold);
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  /* ── HYMN ── */
+  .hymn-block {
+    background: var(--candle);
+    border-left: 3px solid var(--gold);
+    padding: 24px 28px;
+    margin-bottom: 20px;
+    border-radius: 0 2px 2px 0;
+  }
+  .hymn-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-bottom: 10px;
+    display: block;
+  }
+  .hymn-block p { margin-bottom: 0.6em; }
+  .hymn-block .chorus { font-style: italic; font-weight: 500; }
+
+  /* ── CLOSING ── */
+  .closing-card {
+    text-align: center;
+    background: var(--deep);
+    color: var(--ivory);
+    padding: 52px 36px;
+    margin-top: 64px;
+    border-radius: 2px;
+  }
+  .closing-card .family-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 20px;
+    letter-spacing: 0.12em;
+  }
+  .closing-card .thanks-text {
+    font-style: italic;
+    line-height: 1.9;
+    color: rgba(247,244,238,0.85);
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
+  .closing-quote {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    font-style: italic;
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── SAFELY HOME poem ── */
+  .poem-stanza {
+    margin-bottom: 1.4em;
+  }
+  .poem-stanza p { line-height: 1.7; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    text-align: center;
+    color: var(--gold);
+    font-size: 1.1rem;
+    letter-spacing: 0.5em;
+    margin: 40px 0 0;
+    opacity: 0.5;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 500px) {
+    .prayer-block { padding: 20px 18px; }
+    .hymn-block { padding: 18px 16px; }
+    .response-pair { grid-template-columns: 1fr; gap: 0; }
+    .role { margin-top: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <span class="hero-cross">✝</span>
+  <h1>Ricardo Abalos Landingin</h1>
+  <p class="hero-dates">In Loving Memory</p>
+  <div class="hero-rule"></div>
+  <p class="hero-verse">
+    "I am home in Heaven, dear ones;<br>
+    Oh, so happy and so bright!<br>
+    There is perfect joy and beauty<br>
+    In this everlasting light."
+  </p>
+</header>
+
+<!-- NAVIGATION -->
+<nav>
+  <ul>
+    <li><a href="#opening">Opening</a></li>
+    <li><a href="#prayers">Prayers</a></li>
+    <li><a href="#passion">Decade</a></li>
+    <li><a href="#divine-mercy">Divine Mercy</a></li>
+    <li><a href="#litany">Litany</a></li>
+    <li><a href="#closing-prayer">Closing</a></li>
+    <li><a href="#hymns">Hymns</a></li>
+    <li><a href="#thanksgiving">Thanksgiving</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- OPENING HYMN -->
+  <section id="opening">
+    <span class="section-label">Opening</span>
+    <h2 class="section-title">Come Holy Spirit</h2>
+    <div class="section-rule"></div>
+    <div class="hymn-block">
+      <p>Come Holy Spirit, we need You,<br>
+      Come Holy Spirit, we pray<br>
+      Come with Your Strength and Your Power,<br>
+      Come in your own special way.</p>
+      <p>Come like a spring in the desert,<br>
+      Come to the withered of souls<br>
+      Lord let Your sweet healing power,<br>
+      Touch and make us whole.</p>
+      <p>Halina Spiritu Santo,<br>
+      Kinakailangan kita<br>
+      Sigla at Lakas ng Mahina,<br>
+      Pag-asa naming lahat.</p>
+      <p>Glory be to the Father,<br>
+      Glory be to the Son<br>
+      Glory be Holy Spirit,<br>
+      Now and Forever, Amen.</p>
+    </div>
+  </section>
+
+  <!-- PREPARATORY PRAYERS -->
+  <section id="prayers">
+    <span class="section-label">Preparatory</span>
+    <h2 class="section-title">Opening Prayers</h2>
+    <div class="section-rule"></div>
+
+    <div class="prayer-block">
+      <div class="response-pair">
+        <span class="role">All</span>
+        <span class="response-text">In the name of the Father and of the Son and of the Holy Spirit. Amen.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">Our Father, who art in heaven…</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Give us this day our daily bread…</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">Hail Mary, full of grace…</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Holy Mary, Mother of God…</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">You, O Lord will open my lips.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">And my tongue shall announce Your praise.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">Incline unto my aid, O God.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">O Lord make haste to help me.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">Glory be to the Father and to the Son and to the Holy Spirit;</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">As it was in the beginning is now and ever shall be world without end. Amen.</span>
+      </div>
+    </div>
+
+    <h3 class="section-title" style="margin-top:32px; margin-bottom:6px;">Apostles' Creed</h3>
+    <div class="section-rule"></div>
+    <div class="prayer-block">
+      <p>I believe in God, the Father Almighty, Creator of heaven and earth; and in Jesus Christ, His only Son, our Lord; who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died, and was buried.</p>
+      <p>He descended into hell; the third day He arose again from the dead. He ascended into heaven, and sits at the right hand of God, the Father Almighty; from thence He shall come to judge the living and the dead.</p>
+      <p>I believe in the Holy Spirit, the Holy Catholic Church, the communion of Saints, the forgiveness of sins, the resurrection of the body and life everlasting. Amen.</p>
+    </div>
+
+    <h3 class="section-title" style="margin-top:32px; margin-bottom:6px;">Act of Contrition</h3>
+    <div class="section-rule"></div>
+    <div class="prayer-block">
+      <p>O my God, I am heartily sorry for having offended You and I detest all my sins, because I dread the loss of heaven and the pains of hell, but most of all because they offend you, my God, who are all good and deserving of all my love. I firmly resolve, with the help of your grace, to confess my sins, to do penance and to amend my life. Amen.</p>
+    </div>
+  </section>
+
+  <!-- DECADE OF THE PASSION -->
+  <section id="passion">
+    <span class="section-label">Rosary</span>
+    <h2 class="section-title">Decade of the Passion</h2>
+    <div class="section-rule"></div>
+
+    <div class="prayer-block">
+      <p>Lord, open my lips and inflame our hearts and cleanse them of useless and evil thoughts. Enlighten our minds, that we may seriously meditate on Thy sufferings and death and the pains endured by Thy most glorious Mother, and deign to hear and receive us before Thy great Majesty, Thou who livest and reignest forever. Amen.</p>
+    </div>
+
+    <p style="font-style:italic; color:var(--soft); font-size:0.9rem; margin-bottom:20px;">For each decade of the rosary, on the Our Father bead, say:</p>
+
+    <div class="prayer-block">
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all highlight">My most merciful Jesus, look down with eyes of pity on the faithful soul of Ricardo for whom Thou suffered and died on the cross. Graciously accept him into the kingdom of Thy eternal glory. Amen.</span>
+      </div>
+    </div>
+
+    <p style="font-style:italic; color:var(--soft); font-size:0.9rem; margin: 20px 0;">On each Hail Mary bead:</p>
+
+    <div class="prayer-block">
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">My Jesus, through Thy bloody sweat that flowed from Thy body during Thy agony in the Garden of Gethsemane,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Have mercy on the soul of Ricardo.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">My Jesus, through the blow Thou received on Thy Sacred face,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Have mercy on the soul of Ricardo.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">My Jesus, through the cruel scourging Thou endured,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Have mercy on the soul of Ricardo.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">My Jesus, through the crown of thorns that pierced Thy Sacred Head,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Have mercy on the soul of Ricardo.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">My Jesus, through Thy carrying of the Cross on the path to Calvary,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Have mercy on the soul of Ricardo.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">My Jesus, through Thy loving face covered with blood which Thou allowed to be imprinted on the veil of Veronica,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Have mercy on the soul of Ricardo.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">My Jesus, through Thy bloody garments which were cruelly removed from Thy wounded body,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Have mercy on the soul of Ricardo.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">My Jesus, through Thy Holy Body nailed on the cross,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Have mercy on the soul of Ricardo.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">My Jesus, through Thy Hand and Feet pierced with cruel nails,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Have mercy on the soul of Ricardo.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">My Jesus, through Thy Sacred Side pierced with a lance and from which flowed blood and water,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Have mercy on the soul of Ricardo.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">Grant unto him eternal rest, O Lord,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">And let Perpetual light shine upon him.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">May he rest in peace.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Amen.</span>
+      </div>
+    </div>
+    <p style="font-style:italic; color:var(--soft); font-size:0.9rem; text-align:center;">Repeat for each decade of the Rosary.</p>
+  </section>
+
+  <!-- DIVINE MERCY LITANY -->
+  <section id="divine-mercy">
+    <span class="section-label">Litany</span>
+    <h2 class="section-title">Litany of the Divine Mercy</h2>
+    <div class="section-rule"></div>
+    <p style="font-style:italic; color:var(--soft); font-size:0.9rem; margin-bottom:24px;">Let the doubting soul read these considerations on the Divine Mercy and become trusting.</p>
+
+    <div class="prayer-block" style="padding: 20px 28px;">
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, gushing forth from the bosom of the Father</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, greatest attribute of God</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, incomprehensible mystery</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, fount gushing forth from the mystery of the Most Blessed Trinity</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, unfathomed by any intellect, human or angelic</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, from which wells forth all life and happiness</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, better than the heavens</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, source of miracles and wonders</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, encompassing the whole universe</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, descending to earth in the Person of the Incarnate Word</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, which flowed out from the open wound of the Heart of Jesus</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, enclosed in the Heart of Jesus for us, and especially for sinners</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, unfathomed in the institution of the Sacred Host</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, in the founding of the Holy Church</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, in the Sacrament of Holy Baptism</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, in our justification through Jesus Christ</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, accompanying us throughout our whole life</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, embracing us especially at the hour of death</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, endowing us with immortal life</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, accompanying us every moment of our life</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, shielding us from the fire of hell</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, in the conversion of hardened sinners</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, astonishment for Angels, incomprehensible to Saints</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, unfathomed in all the mysteries of God</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, lifting us out of every misery</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, source of our happiness and joy</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, in calling us forth from nothingness to existence</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, embracing all the works of His hands</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, crown of all of God's handiwork</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, in which we are all immersed</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, sweet relief for anguished hearts</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, only hope for despairing souls</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, repose of hearts, peace amidst fear</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, delight and ecstasy of holy souls</span><span class="litany-response">I trust in You</span></div>
+      <div class="litany-row"><span class="litany-invocation">Divine Mercy, inspiring hope against all hope</span><span class="litany-response">I trust in You</span></div>
+    </div>
+
+    <h3 class="section-title" style="margin-top:40px; margin-bottom:6px;">Offering Prayer of St. Augustine</h3>
+    <div class="section-rule"></div>
+    <div class="prayer-block">
+      <p>Most Sweet Jesus, who in Thy desire to redeem the world, deigned to be born, circumcised, mocked by the Jews, to fall into the hand of Thy enemies through the treacherous kiss of Judas, to be bound and brought to the place of sacrifice like a meek lamb, brought before Caiphas, Pilate and Herod, spat on, accused and condemned with false witness, to be slapped and have Thy Sacred Body covered with wounds from the cruel scourging, to be crowned with thorns, Thy face covered with a purple cloth in mockery, stripped of Thy garments, nailed and elevated on the Cross between two thieves as if Thou were one of them, offered gall and vinegar to drink, to be pierced on Thy side with a lance —</p>
+      <p>Deliver, O Lord, the soul of Ricardo from his great sufferings through Thy most bitter passion. Bring him to Thy Glory and deliver him from the pains of hell, through the merits of Thy Holy Passion and Death on the Cross, so that he may be worthy to enter that Kingdom where Thou brought the good thief who was crucified with Thee, who liveth and reigneth with the Father and the Holy Spirit forever. Amen.</p>
+    </div>
+  </section>
+
+  <!-- LITANY FOR THE FAITHFUL DEPARTED -->
+  <section id="litany">
+    <span class="section-label">Litany</span>
+    <h2 class="section-title">Litany for the Faithful Departed</h2>
+    <div class="section-rule"></div>
+
+    <div class="prayer-block">
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">Lord, have mercy on us.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Christ, have mercy on us.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">Lord, have mercy on us. Christ, hear us.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Christ, graciously hear us.</span>
+      </div>
+    </div>
+
+    <div class="prayer-block" style="padding: 20px 28px; margin-top: 4px;">
+      <div class="litany-row"><span class="litany-invocation">God the Father of heaven</span><span class="litany-response">Have mercy on the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">God the Son, Redeemer of the world</span><span class="litany-response">Have mercy on the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">God the Holy Spirit</span><span class="litany-response">Have mercy on the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">Holy Trinity, one God</span><span class="litany-response">Have mercy on the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">Holy Mary · Holy Mother of God · Holy Virgin of Virgins</span><span class="litany-response">Pray for the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">St. Michael · All you Angels and Archangels</span><span class="litany-response">Pray for the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">St. John the Baptist · St. Joseph · All holy patriarchs and prophets</span><span class="litany-response">Pray for the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">St. Peter · St. Paul · St. John · All holy Apostles and Evangelists</span><span class="litany-response">Pray for the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">St. Stephen · St. Lawrence · All holy martyrs</span><span class="litany-response">Pray for the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">St. Gregory · St. Ambrose · St. Augustine · St. Jerome</span><span class="litany-response">Pray for the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">All holy bishops and Confessors · All holy doctors</span><span class="litany-response">Pray for the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">All holy priests and Levites · All holy monks and Hermits</span><span class="litany-response">Pray for the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">St. Mary Magdalene · St. Barbara · All holy virgins and widows</span><span class="litany-response">Pray for the soul of Ricardo</span></div>
+    </div>
+
+    <div class="prayer-block" style="padding: 20px 28px; margin-top: 4px;">
+      <div class="litany-row"><span class="litany-invocation">From all evil · From your wrath · From the rigor of Your Justice</span><span class="litany-response">O Lord, deliver the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">From the power of the Devil · From the gnawing worm of conscience</span><span class="litany-response">O Lord, deliver the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">From long-enduring Sorrow · From eternal flames · From horrible darkness</span><span class="litany-response">O Lord, deliver the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">Through Your admirable Conception · Through Your Holy Nativity</span><span class="litany-response">O Lord, deliver the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">Through Your most Profound humiliation · Through Your prompt Obedience</span><span class="litany-response">O Lord, deliver the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">Through Your infinite Love · Through Your sorrow and anguish</span><span class="litany-response">O Lord, deliver the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">Through Your scourging · Through Your crowning with thorns</span><span class="litany-response">O Lord, deliver the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">Through Your most cruel Death · Through Your most holy Wounds</span><span class="litany-response">O Lord, deliver the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">Through Your most bitter Cross and Passion · Through Your Holy Resurrection</span><span class="litany-response">O Lord, deliver the soul of Ricardo</span></div>
+      <div class="litany-row"><span class="litany-invocation">Through Your Admirable Ascension · Through the coming of the Holy Spirit</span><span class="litany-response">O Lord, deliver the soul of Ricardo</span></div>
+    </div>
+
+    <div class="prayer-block" style="margin-top:4px;">
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">Lamb of God, who takes away the sins of the world,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Grant unto Ricardo rest.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">Lamb of God, who takes away the sins of the world,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Grant unto Ricardo rest.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">Lamb of God, who takes away the sins of the world,</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Grant unto Ricardo rest everlasting.</span>
+      </div>
+      <div class="response-pair" style="margin-top:16px;">
+        <span class="role">Leader</span>
+        <span class="response-text">From the gates of hell.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Deliver his soul, O Lord.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">O Lord, hear my prayer.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">And let my cry come to You.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING PRAYER -->
+  <section id="closing-prayer">
+    <span class="section-label">Closing</span>
+    <h2 class="section-title">Let Us Pray</h2>
+    <div class="section-rule"></div>
+    <div class="prayer-block">
+      <p>O God, the Creator and Redeemer of all the faithful, grant to the soul of Thy servant Ricardo, the remission of all his sins, that through pious supplications, he may obtain the pardon he always desired, who liveth and reigneth world without end. Amen.</p>
+      <p>Grant O Lord, that while we lament and cry for the departure of Thy servant Ricardo, may we always remember that we are most certainly to follow him. And give us the Grace to prepare for that last hour, by a good life, that we may not be surprised by a sudden and unprovided death, but be ever watching, that when Thou shall call, we may be ready to enter into Eternal glory, through Christ our Lord. Amen.</p>
+    </div>
+
+    <div class="prayer-block" style="margin-top:4px;">
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">Eternal rest grant unto him, O Lord.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">And let perpetual light shine upon him.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">From the gates of hell.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Deliver his soul, O Lord.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">May he rest in peace.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Amen.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role">Leader</span>
+        <span class="response-text">May the soul of Ricardo rest in peace.</span>
+      </div>
+      <div class="response-pair">
+        <span class="role all">All</span>
+        <span class="response-text all">Amen.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HYMNS -->
+  <section id="hymns">
+    <span class="section-label">Songs</span>
+    <h2 class="section-title">Hymns</h2>
+    <div class="section-rule"></div>
+
+    <!-- Be Not Afraid -->
+    <div class="hymn-block">
+      <span class="hymn-label">Be Not Afraid</span>
+      <p>You shall cross the barren desert but you shall not die of thirst.<br>
+      You shall wander far in safety though you do not know the way.<br>
+      You shall speak your words in foreign lands and all will understand.<br>
+      You shall see the face of God and live.</p>
+      <p class="chorus">Be not afraid, I go before you always.<br>
+      Come follow me, and I will give you rest.</p>
+      <p>If you pass through raging waters in the sea, you shall not drown.<br>
+      If you walk amid the burning flames, you shall not be harmed.<br>
+      If you stand before the power of hell and death is at your side,<br>
+      Know that I am with you through it all.</p>
+      <p class="chorus">Be not afraid, I go before you always.<br>
+      Come follow me, and I will give you rest.</p>
+      <p>Blessed are your poor, for the kingdom shall be theirs.<br>
+      Blessed are you that weep and mourn, for one day you shall laugh.<br>
+      And if wicked men insult and hate you, all because of me,<br>
+      Blessed, blessed are you.</p>
+      <p class="chorus">Be not afraid, I go before you always.<br>
+      Come follow me, and I will give you rest.</p>
+    </div>
+
+    <!-- On Eagle's Wings -->
+    <div class="hymn-block">
+      <span class="hymn-label">On Eagle's Wings</span>
+      <p>You who dwell in the shelter of the Lord, who abide in his shadow for life,<br>
+      say to the Lord: "My refuge, my rock in whom I trust!"</p>
+      <p class="chorus">And He will raise you up on eagle's wings, bear you on the breath of dawn,<br>
+      make you to shine like the sun, and hold you in the palm of his hand.</p>
+      <p>The snare of the fowler will never capture you, and famine will bring you no fear:<br>
+      under his wings your refuge, his faithfulness your shield.</p>
+      <p class="chorus">And He will raise you up on eagle's wings, bear you on the breath of dawn,<br>
+      make you to shine like the sun, and hold you in the palm of his hand.</p>
+      <p>For to his angels he's given a command to guard you in all of your ways;<br>
+      upon their hands they will bear you up, lest you dash your foot against a stone.</p>
+      <p class="chorus">And He will raise you up on eagle's wings, bear you on the breath of dawn,<br>
+      make you to shine like the sun, and hold you in the palm of his hand.</p>
+    </div>
+
+    <!-- Here I Am Lord -->
+    <div class="hymn-block">
+      <span class="hymn-label">Here I Am Lord</span>
+      <p>I the Lord of sea and sky, I have heard my people cry.<br>
+      All who dwell in dark and sin, my hand will save.<br>
+      I have made the stars of night, I will make their darkness bright.<br>
+      Who will bear my light to them? Whom shall I send?</p>
+      <p class="chorus">Here I am Lord. Is it I Lord?<br>
+      I have heard you calling in the night.<br>
+      I will go Lord, if you lead me.<br>
+      I will hold your people in my heart.</p>
+      <p>I the Lord of wind and flame, I will tend the poor and lame.<br>
+      I will set a feast for them, my hand will save.<br>
+      Finest bread I will provide till their hearts be satisfied.<br>
+      I will give my life to them. Whom shall I send?</p>
+      <p class="chorus">Here I am Lord. Is it I Lord?<br>
+      I have heard you calling in the night.<br>
+      I will go Lord, if you lead me.<br>
+      I will hold your people in my heart.</p>
+    </div>
+
+    <!-- Prayer of St. Francis -->
+    <div class="hymn-block">
+      <span class="hymn-label">Prayer of St. Francis</span>
+      <p>Make me a channel of your peace.<br>
+      Where there is hatred, let me bring your love.<br>
+      Where there is injury, your pardon, Lord,<br>
+      And where there's doubt, true faith in you.</p>
+      <p>Make me a channel of your peace.<br>
+      Where there's despair in life, let me bring hope.<br>
+      Where there is darkness only light,<br>
+      And where there's sadness ever joy.</p>
+      <p class="chorus">Oh Master, grant that I may never seek<br>
+      So much to be consoled as to console.<br>
+      To be understood as to understand,<br>
+      To be loved as to love with all my soul.</p>
+      <p>Make me a channel of your peace.<br>
+      It is in pardoning that we are pardoned;<br>
+      In giving of ourselves that we receive,<br>
+      And in dying that we're born to eternal life.</p>
+    </div>
+
+    <!-- Hiram Sa Diyos -->
+    <div class="hymn-block">
+      <span class="hymn-label">Hiram Sa Diyos</span>
+      <p>Hiram sa Diyos ang aking buhay<br>
+      Ikaw at ako'y tanging handog lamang<br>
+      Di ko ninais na ako'y isilang<br>
+      Ngunit salamat dahil may buhay.</p>
+      <p>Ligaya ko na ako'y isilang<br>
+      Pagka't tao ay mayroong dangal<br>
+      Sinong may pag-ibig, sinong nagmamahal<br>
+      Kundi ang tao, D'yos ang pinagmulan.</p>
+      <p class="chorus">Kundi ako umibig, kung di ko man bigyan ng halaga<br>
+      Ang buhay kong handog, ang buhay kong hiram sa Diyos<br>
+      Kung di ako nagmamahal, Sino Ako?</p>
+    </div>
+
+    <!-- Saan Ka Man Naroroon -->
+    <div class="hymn-block">
+      <span class="hymn-label">Saan Ka Man Naroroon</span>
+      <p class="chorus">Saan ka man naroroon Sinta<br>
+      Pagibig kong wagas ang 'yong madarama<br>
+      Kailan pa man sa iyo'y di lilimot<br>
+      Pusong uhaw sa 'yong pag-irog.</p>
+      <p class="chorus">Saan ka man naroroon Sinta<br>
+      Pangarap ko'y ikaw pagkat mahal kita<br>
+      Asahan mong sa habang panahon<br>
+      Alaala kita saan ka man naroroon.</p>
+      <p style="font-style:italic;">Asahan mong sa habang panahon<br>
+      Alaala kita saan ka man naroroon.</p>
+    </div>
+  </section>
+
+  <!-- SAFELY HOME -->
+  <section>
+    <span class="section-label">A Poem</span>
+    <h2 class="section-title">Safely Home</h2>
+    <div class="section-rule"></div>
+    <div class="prayer-block">
+      <div class="poem-stanza">
+        <p>I am home in Heaven, dear ones;<br>
+        Oh, so happy and so bright!<br>
+        There is perfect joy and beauty<br>
+        In this everlasting light.</p>
+      </div>
+      <div class="poem-stanza">
+        <p>All the pain and grief is over,<br>
+        Every restless tossing passed;<br>
+        I am now at peace forever,<br>
+        Safely home in Heaven at last.</p>
+      </div>
+      <div class="poem-stanza">
+        <p>Did you wonder I so calmly<br>
+        Trod the valley of the shade?<br>
+        Oh! but Jesus' arm to lean on,<br>
+        Could I have one doubt or dread?</p>
+      </div>
+      <div class="poem-stanza">
+        <p>Then you must not grieve so sorely,<br>
+        For I love you dearly still;<br>
+        Try to look beyond earth's shadows,<br>
+        Pray to trust our Father's Will.</p>
+      </div>
+      <div class="poem-stanza">
+        <p>There is work still waiting for you,<br>
+        So you must not idly stand;<br>
+        Do it now, while life remaineth —<br>
+        You shall rest in Jesus' land.</p>
+      </div>
+      <div class="poem-stanza" style="margin-bottom:0;">
+        <p>When that work is all completed,<br>
+        He will gently call you Home;<br>
+        Oh, the rapture of that meeting,<br>
+        Oh, the joy to see you come!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THANKSGIVING -->
+  <section id="thanksgiving">
+    <div class="closing-card">
+      <p class="family-name">✝ &nbsp; The Landingin Family &nbsp; ✝</p>
+      <p class="thanks-text">
+        We are comforted by the many friends and loved ones who have helped celebrate the life of Ricardo. We sincerely appreciate all of your thoughts and prayers during this difficult time.
+      </p>
+      <div style="width:40px; height:1px; background:var(--gold); margin:0 auto 24px;"></div>
+      <p class="closing-quote">"The angels are always near to those who are grieving, to whisper to them that their loved ones are safe in the hands of God."</p>
+    </div>
+  </section>
+
+</main>
+
+<footer style="text-align:center; padding:32px 24px; font-family:'Lato',sans-serif; font-size:0.75rem; letter-spacing:0.12em; color:var(--soft); border-top:1px solid var(--rule); margin-top:48px;">
+  IN LOVING MEMORY &nbsp;✝&nbsp; RICARDO ABALOS LANDINGIN
+</footer>
+
+</body>
+</html>
